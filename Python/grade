@@ -1,0 +1,54 @@
+import numpy as np
+import pandas as pd   # new import
+
+# Step 1: Create list of students and subjects
+students = np.array(["Asha", "Ravi", "Meera", "John", "Liya",
+                     "Arun", "Sara", "Dev", "Neha", "Irfan"])
+
+subjects = np.array(["Math", "Science", "English", "History"])
+
+# Step 2: Generate random exam scores (0–100)
+marks = np.random.randint(0, 101, size=(len(students), len(subjects)))
+
+# Step 3: Create a grade sheet (DataFrame)
+grade_sheet = pd.DataFrame(marks, index=students, columns=subjects)
+grade_sheet["Total"] = grade_sheet.sum(axis=1)
+print("Top scorer:", grade_sheet["Total"].idxmax(), grade_sheet["Total"].max())
+print("Lowest scorer:", grade_sheet["Total"].idxmin(), grade_sheet["Total"].min())
+for subject in subjects:
+    topper = grade_sheet[subject].idxmax()
+    score = grade_sheet[subject].max()
+    print(f"Topper in {subject}: {topper} with {score} marks")
+for subject in subjects:
+    lowest_scorer = grade_sheet[subject].idxmin()
+    lowest_marks = grade_sheet[subject].min()
+    print(f"Lowest in {subject}: {lowest_scorer} with  {lowest_marks} marks")
+overall_topper = grade_sheet["Total"].idxmax()
+overall_lowest = grade_sheet["Total"].idxmin()
+
+print(f"Overall Topper: {overall_topper}")
+print(f"Overall Lowest: {overall_lowest}")
+
+
+
+print("Grade Sheet:\n")
+print(grade_sheet)
+import matplotlib.pyplot as plt
+
+# Bar chart of totals
+grade_sheet["Total"].plot(kind="bar", figsize=(8,5))
+plt.title("Total Marks per Student")
+plt.xlabel("Students")
+plt.ylabel("Total Marks")
+plt.show()
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+
+plt.figure(figsize=(8,6))
+sns.heatmap(grade_sheet.iloc[:, :-2], annot=True, cmap="YlGnBu")
+plt.title("Heatmap of Student Scores")
+plt.show()
+
+

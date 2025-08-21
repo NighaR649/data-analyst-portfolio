@@ -69,7 +69,6 @@ order by
 limit 1;  
 
 --  Analyze Discount vs. Profit (High Discount, Low Profit?)
-
 select
        `Discount`,
        round(avg(Profit),2)as avg_profit ,

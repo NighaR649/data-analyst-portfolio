@@ -39,7 +39,7 @@ This project uses the **Superstore dataset** to perform exploratory sales analys
 
 ## 💾 Files Included
 
-- `sales_analysis.sql` – All SQL queries used in this project
+- `sales_analysis.sql` – All SQL queries used in this projectgit status
 - `README.md` – This documentation file
 
 ---
